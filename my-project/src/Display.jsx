@@ -16,14 +16,32 @@ const Display = ({ count }) => {
         console.log(resetData);
     }
 
+    const [use, setuse] = useState([]);
+    const mark = (flag) => {
+        const newMart = [...use, flag]
+        setuse(newMart);
+    }
+
+    const [show, setShow] = useState([]);
+    const handleShow = (name) => {
+        const newShow = [...show, name]
+        setShow(newShow);
+    }
+
     return (
         <>
             <div>
                 <input type="search" onInput={handleValue} id="" />
                 <button onClick={() => handleClick(count)}>{handle ? "Search" : "Reset"}</button>
             </div>
+            <div>
+                {use.map((flag) => { return <h2 key={flag}>{flag}</h2> })}
+            </div>
+            <ol>
+                {show.map((flag) => { return <li key={flag}>{flag}</li> })}
+            </ol>
             <div className={`container`}>
-                {handle.map((item) => { return <TotalData item={item} /> })}
+                {handle.map((item) => { return <TotalData item={item} mark={mark} handleShow={handleShow} /> })}
             </div>
         </>
     );

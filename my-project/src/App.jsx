@@ -11,6 +11,7 @@ function App() {
             .then(data => setCount(data));
     }, [])
 
+
     return (
         <>
             <Suspense fallback={<div>Loading...</div>}><Display count={count} />
